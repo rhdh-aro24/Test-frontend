@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Test-poi-map-app-dev
+  annotations:
+    argocd/app-name: Test-poi-map-app-dev
+    backstage.io/kubernetes-id: Test-poi-map-app
+    backstage.io/kubernetes-namespace: Test
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: rhdh-aro24/Test-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.kovj5vhc.eastus.aroapp.io/dev-pipelines/ns/Test/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.kovj5vhc.eastus.aroapp.io/k8s/ns/Test/deployments/Test-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.kovj5vhc.eastus.aroapp.io/#https://github.com/rhdh-aro24/Test-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://Test-poi-map-app-Test.apps.kovj5vhc.eastus.aroapp.io
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:abn-dmp"
+  system: workshop-system-Test
+  consumesApis:
+    - gateway-api-Test
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-Test
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:abn-dmp"
